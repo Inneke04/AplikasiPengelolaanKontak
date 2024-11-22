@@ -1,3 +1,16 @@
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,6 +29,7 @@ public class AplikasiPengelolaanKontak extends javax.swing.JFrame {
     public AplikasiPengelolaanKontak() {
         initComponents();
       
+        mulai();
     }
   
 
@@ -27,24 +41,358 @@ public class AplikasiPengelolaanKontak extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField3 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Aplikasi Pengelolaan Kontak", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Nama :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jLabel1, gridBagConstraints);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Telepon :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jLabel2, gridBagConstraints);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Cari :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jLabel3, gridBagConstraints);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("Kategori :");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jLabel4, gridBagConstraints);
+
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jTextField1, gridBagConstraints);
+
+        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jTextField2, gridBagConstraints);
+
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Keluarga", "Teman", "Kerja", "Lainnya" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jComboBox1, gridBagConstraints);
+
+        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jTextField3, gridBagConstraints);
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setText("Tambah");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jButton1, gridBagConstraints);
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton2.setText("Ubah");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jButton2, gridBagConstraints);
+
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton3.setText("Hapus");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jButton3, gridBagConstraints);
+
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton4.setText("Ekspor");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jButton4, gridBagConstraints);
+
+        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton5.setText("Impor");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jButton5, gridBagConstraints);
+
+        jButton6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton6.setText("Cari");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jButton6, gridBagConstraints);
+
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nama", "Nomor", "Kategori"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 6);
+        jPanel1.add(jScrollPane1, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 512, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 497, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c) && c != java.awt.event.KeyEvent.VK_BACK_SPACE) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Masukkan angka!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+        private void mulai() {
+        jButton1.addActionListener(new tambahKontakListener());
+        jButton2.addActionListener(new ubahKontakListener());
+        jButton3.addActionListener(new hapusKontakListener());
+        jButton4.addActionListener(new cariKontakListener());
+        jButton5.addActionListener(new eksporKontakListener());
+        jButton6.addActionListener(new imporKontakListener());
+
+        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+                int barisAktif = jTable1.getSelectedRow(); 
+                if (barisAktif >= 0) {
+                    jTextField1.setText(tableModel.getValueAt(barisAktif, 1).toString());
+                    jTextField2.setText(tableModel.getValueAt(barisAktif, 2).toString());
+                    jComboBox1.setSelectedItem(tableModel.getValueAt(barisAktif, 3).toString());
+                }
+            }
+        });
+
+        muatKontak();
+    }
+    
+    private void muatKontak() {
+        DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+        tableModel.setRowCount(0); 
+        try (ResultSet rs = Kontak.getKontak()) {
+            while (rs != null && rs.next()) {
+                tableModel.addRow(new Object[]{
+                        rs.getInt("id"),
+                        rs.getString("nama"),
+                        rs.getString("nomor"),
+                        rs.getString("kategori")
+                });
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private class tambahKontakListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String nama = jTextField1.getText();
+            String nomor = jTextField2.getText();
+            String kategori = jComboBox1.getSelectedItem().toString(); 
+            if (validasiNomor(nomor)) {
+                if (!jTextField1.getText().isEmpty()) {
+                    Kontak.tambahKontak(new Kontak(nama, nomor, kategori));
+                    muatKontak(); 
+                    bersihkanField(); 
+                } else {
+                    JOptionPane.showMessageDialog(null, "Nama tidak boleh kosong!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid phone number!");
+            }
+        }
+    }
+
+    private class ubahKontakListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+            int barisAktif = jTable1.getSelectedRow(); 
+            if (barisAktif >= 0) {
+                String id = tableModel.getValueAt(barisAktif, 0).toString(); 
+                String nama = jTextField1.getText();
+                String nomor = jTextField2.getText();
+                String kategori = jComboBox1.getSelectedItem().toString();
+                if (validasiNomor(nomor)) {
+                    Kontak.ubahKontak(Integer.parseInt(id), new Kontak(nama, nomor, kategori));
+                    muatKontak(); 
+                    bersihkanField();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid phone number!");
+                }
+            }
+        }
+    }
+
+    private class hapusKontakListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+            int barisAktif = jTable1.getSelectedRow();
+            if (barisAktif >= 0) {
+                String id = tableModel.getValueAt(barisAktif, 0).toString();
+                Kontak.hapusKontak(Integer.parseInt(id));
+                muatKontak();
+                bersihkanField();
+            }
+        }
+    }
+
+    private class cariKontakListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            DefaultTableModel tableModel = (DefaultTableModel) jTable1.getModel();
+            String query = jTextField3.getText();
+            tableModel.setRowCount(0);
+            try (ResultSet rs = Kontak.cariKontak(query)) {
+                while (rs != null && rs.next()) {
+                    tableModel.addRow(new Object[]{
+                            rs.getInt("id"),
+                            rs.getString("nama"),
+                            rs.getString("nomor"),
+                            rs.getString("kategori")
+                    });
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+  
+    private class eksporKontakListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Kontak.eksporKeCSV();
+        }
+    }
+
+    private class imporKontakListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Kontak.imporDariCSV();
+            muatKontak();
+        }
+    }
+
+    private void bersihkanField() {
+        jTextField1.setText("");
+        jTextField2.setText(""); 
+        jComboBox1.setSelectedIndex(0);
+        jTable1.clearSelection();
+    }
+
+    private boolean validasiNomor(String nomor) {
+        return nomor.matches("\\d{10,15}");
+    }
+    
     
     /**
      * @param args the command line arguments
@@ -82,5 +430,22 @@ public class AplikasiPengelolaanKontak extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
